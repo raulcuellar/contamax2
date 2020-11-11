@@ -1,0 +1,24 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-max" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a class="nav-item nav-link" routerLink="/inventario" routerLinkActive="active">Inventario</a>
+        <a class="nav-item nav-link" routerLink="/ingresos" routerLinkActive="active">Ingresos</a>
+        <a class="nav-item nav-link" routerLink="/egresos" routerLinkActive="active">Egresos</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Usuarios</a>
+        <a class="nav-item nav-link" (click)="logout()">Salir</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center mt-4">
+    <p>
+        © 2020, MaxRobot. Derechos reservados.
+    </p>
+</div>

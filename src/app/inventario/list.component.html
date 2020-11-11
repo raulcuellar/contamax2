@@ -1,0 +1,33 @@
+﻿<h1>Items</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Añadir Item</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Item</th>
+            <th style="width: 30%">Clave</th>
+            <th style="width: 30%">Cantidad inicial</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of inventario">
+            <td>{{item.item}}</td>
+            <td>{{item.clave}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.fecha}}</td>
+
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{item.id}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="deleteItem(item.id)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="item.isDeleting">
+                    <span *ngIf="item.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!item.isDeleting">Borrar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!users">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

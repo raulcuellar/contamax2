@@ -1,0 +1,43 @@
+﻿<h1 *ngIf="isAddMode">Añadir item</h1>
+<h1 *ngIf="!isAddMode">Editar item</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="item">Item</label>
+            <input type="text" formControlName="item" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item.errors }" />
+            <div *ngIf="submitted && f.item.errors" class="invalid-feedback">
+                <div *ngIf="f.item.errors.required">Nombre del item requerido</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="clave">Clave</label>
+            <input type="text" formControlName="clave" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clave.errors }" />
+            <div *ngIf="submitted && f.clave.errors" class="invalid-feedback">
+                <div *ngIf="f.clave.errors.required">Clave requerida</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="inicial">Cantidad inicial</label>
+            <input type="text" formControlName="inicial" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.inicial.errors }" />
+            <div *ngIf="submitted && f.inicial.errors" class="invalid-feedback">
+                <div *ngIf="f.inicial.errors.required">Canrtidad incial requerida</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="fecha">
+                Fecha
+            </label>
+            <span id="fecha">{{CurrentDate | 'dd-MM-yyyy'}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Grabar
+        </button>&nbsp;&nbsp;
+        <a routerLink="/users" class="btn btn-info">Cancelar</a>
+    </div>
+</form>
