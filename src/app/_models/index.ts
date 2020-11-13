@@ -1,3 +1,3 @@
 ﻿export * from './alert';
 export * from './user';
-export * from './Inventario';
+export * from './inventario';
