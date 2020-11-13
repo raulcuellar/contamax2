@@ -16,28 +16,32 @@
                 <div *ngIf="f.clave.errors.required">Clave requerida</div>
             </div>
         </div>
-    </div>
-    <div class="form-row">
+        <div class="form-group col">
+            <label for="descripcion">Descripción</label>
+            <input type="text" formControlName="clave" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clave.errors }" />
+            <div *ngIf="submitted && f.clave.errors" class="invalid-feedback">
+                <div *ngIf="f.clave.errors.required">Descripción requerida</div>
+            </div>
+        </div>
         <div class="form-group col">
             <label for="inicial">Cantidad inicial</label>
             <input type="text" formControlName="inicial" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.inicial.errors }" />
             <div *ngIf="submitted && f.inicial.errors" class="invalid-feedback">
-                <div *ngIf="f.inicial.errors.required">Canrtidad incial requerida</div>
+                <div *ngIf="f.inicial.errors.required">Cantidad inicial requerida</div>
             </div>
         </div>
         <div class="form-group col">
             <label for="fecha">
                 Fecha
             </label>
-            <span id="fecha">{{CurrentDate | 'dd-MM-yyyy'}}</span>
+            <input id="fecha" type="date" />
             </div>
-        </div>
-    </div>
     <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Grabar
         </button>&nbsp;&nbsp;
-        <a routerLink="/users" class="btn btn-info">Cancelar</a>
+        <a routerLink="/inventario" class="btn btn-info">Cancelar</a>
+    </div>
     </div>
 </form>

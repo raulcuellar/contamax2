@@ -3,9 +3,10 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th style="width: 30%">Item</th>
-            <th style="width: 30%">Clave</th>
-            <th style="width: 30%">Cantidad inicial</th>
+            <th style="width: 15%">Item</th>
+            <th style="width: 15%">Clave</th>
+            <th style="width: 45%">Descripción</th>
+            <th style="width: 15%">Cantidad inicial</th>
             <th style="width: 10%"></th>
         </tr>
     </thead>
@@ -13,6 +14,7 @@
         <tr *ngFor="let item of inventario">
             <td>{{item.item}}</td>
             <td>{{item.clave}}</td>
+            <td>{{item.descripcion}}</td>
             <td>{{item.cantidad}}</td>
             <td>{{item.fecha}}</td>
 

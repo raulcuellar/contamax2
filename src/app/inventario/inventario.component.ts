@@ -28,13 +28,14 @@ export class InventarioComponent implements OnInit {
         this.form = this.formBuilder.group({
             item: ['', Validators.required],
             clave: ['', Validators.required],
+            descripcion: ['', Validators.required],
             inicial: ['', Validators.required],
         });
 
         if (!this.isAddMode) {
             this.inventarioService.getById(this.id)
                 .pipe(first())
-                .subscribe(x => this.form.patchValue(x));
+                .subscribe(inventario => this.form.patchValue(inventario));
         }
     }
 
@@ -61,8 +62,8 @@ export class InventarioComponent implements OnInit {
     }
 
     private createItem() {
-        this.inventarioService.register(this.form.value)
-            .pipe(first())
+        this.inventarioService.inventario(this.form.value)
+            .item(first())
             .subscribe({
                 next: () => {
                     this.alertService.success('Item añadido', { keepAfterRouteChange: true });
